@@ -11,10 +11,10 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.VITE_LANGFLOW_API_KEY': JSON.stringify(env.VITE_LANGFLOW_API_KEY || env.LANGFLOW_API_KEY),
-        'process.env.VITE_LANGFLOW_API_URL': JSON.stringify(env.VITE_LANGFLOW_API_URL || env.LANGFLOW_API_URL),
+        'import.meta.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+        'import.meta.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+        'import.meta.env.VITE_LANGFLOW_API_KEY': JSON.stringify(env.VITE_LANGFLOW_API_KEY || env.LANGFLOW_API_KEY),
+        'import.meta.env.VITE_LANGFLOW_API_URL': JSON.stringify(env.VITE_LANGFLOW_API_URL || env.LANGFLOW_API_URL),
         'import.meta.env.VITE_ADMIN_EMAIL': JSON.stringify(env.VITE_ADMIN_EMAIL || 'admin@validate.es'),
         'import.meta.env.VITE_ADMIN_PASSWORD': JSON.stringify(env.VITE_ADMIN_PASSWORD || 'ValidateNaxia1357')
       },
