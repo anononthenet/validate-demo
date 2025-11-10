@@ -1,0 +1,36 @@
+
+[
+  {
+    "nombre": "Operario Construcción",
+    "documentos_requeridos": [
+      "DNI",
+      "Certificado Formación PRL",
+      "Apto Médico"
+    ]
+  },
+  {
+    "nombre": "Administrativo",
+    "documentos_requeridos": [
+      "DNI",
+      "Contrato"
+    ]
+  },
+  {
+    "nombre": "Operario Maquinaria",
+    "documentos_requeridos": [
+      "DNI",
+      "Certificado Formación PRL",
+      "Apto Médico",
+      "Certificado Maquinaria"
+    ]
+  },
+  {
+    "nombre": "Contratista General",
+    "documentos_requeridos": [
+      "Certificado Corriente de Pago SS",
+      "Certificado Corriente de Pago AEAT",
+      "Seguro RC",
+      "TC2"
+    ]
+  }
+]

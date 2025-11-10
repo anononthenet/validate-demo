@@ -1,0 +1,9 @@
+
+[
+  { "id": "oficina-central-madrid", "nombre": "Oficina Central Madrid" },
+  { "id": "construccion-torre-norte", "nombre": "Construcción Torre Norte" },
+  { "id": "planta-solar-el-sol", "nombre": "Planta Solar El Sol" },
+  { "id": "fabrica-componentes", "nombre": "Fábrica de Componentes" },
+  { "id": "centro-logistico-sur", "nombre": "Centro Logístico Sur" },
+  { "id": "obra-rehabilitacion-centro", "nombre": "Obra Rehabilitación Centro" }
+]

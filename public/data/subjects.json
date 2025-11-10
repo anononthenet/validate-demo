@@ -1,0 +1,213 @@
+
+[
+  {
+    "id": "12345678W",
+    "dni": "12345678W",
+    "nombre": "Juan",
+    "apellido1": "Pérez",
+    "apellido2": "García",
+    "centro": "Construcción Torre Norte",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "Y8765432Z",
+    "dni": "Y8765432Z",
+    "nombre": "Maria",
+    "apellido1": "Schmidt",
+    "apellido2": "",
+    "centro": "Oficina Central Madrid",
+    "grupo_requisitos": "Administrativo",
+    "estado": "Activo"
+  },
+  {
+    "id": "B12345678",
+    "dni": "B12345678",
+    "nombre": "Construcciones S.L.",
+    "apellido1": "",
+    "apellido2": "",
+    "centro": "Obra Rehabilitación Centro",
+    "grupo_requisitos": "Contratista General",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "98765432Q",
+    "dni": "98765432Q",
+    "nombre": "Ana",
+    "apellido1": "López",
+    "apellido2": "Martín",
+    "centro": "Construcción Torre Norte",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Baja"
+  },
+  {
+    "id": "55556666A",
+    "dni": "55556666A",
+    "nombre": "Carlos",
+    "apellido1": "Sánchez",
+    "apellido2": "Ruiz",
+    "centro": "Fábrica de Componentes",
+    "grupo_requisitos": "Operario Maquinaria",
+    "estado": "Activo"
+  },
+  {
+    "id": "77778888B",
+    "dni": "77778888B",
+    "nombre": "Laura",
+    "apellido1": "Gómez",
+    "apellido2": "Fernández",
+    "centro": "Oficina Central Madrid",
+    "grupo_requisitos": "Administrativo",
+    "estado": "Activo"
+  },
+  {
+    "id": "11112222C",
+    "dni": "11112222C",
+    "nombre": "Pedro",
+    "apellido1": "Martínez",
+    "apellido2": "Alonso",
+    "centro": "Centro Logístico Sur",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "33334444D",
+    "dni": "33334444D",
+    "nombre": "Sofía",
+    "apellido1": "Romero",
+    "apellido2": "Díaz",
+    "centro": "Planta Solar El Sol",
+    "grupo_requisitos": "Operario Maquinaria",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "99990000E",
+    "dni": "99990000E",
+    "nombre": "Javier",
+    "apellido1": "Torres",
+    "apellido2": "Moreno",
+    "centro": "Construcción Torre Norte",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "66667777F",
+    "dni": "66667777F",
+    "nombre": "Elena",
+    "apellido1": "Navarro",
+    "apellido2": "Gil",
+    "centro": "Fábrica de Componentes",
+    "grupo_requisitos": "Administrativo",
+    "estado": "Activo"
+  },
+  {
+    "id": "B87654321",
+    "dni": "B87654321",
+    "nombre": "Montajes Eléctricos ACME",
+    "apellido1": "",
+    "apellido2": "",
+    "centro": "Planta Solar El Sol",
+    "grupo_requisitos": "Contratista General",
+    "estado": "Activo"
+  },
+  {
+    "id": "A12312312",
+    "dni": "A12312312",
+    "nombre": "Limpiezas BrilloTotal S.A.",
+    "apellido1": "",
+    "apellido2": "",
+    "centro": "Oficina Central Madrid",
+    "grupo_requisitos": "Contratista General",
+    "estado": "Activo"
+  },
+  {
+    "id": "22223333G",
+    "dni": "22223333G",
+    "nombre": "David",
+    "apellido1": "Muñoz",
+    "apellido2": "Ortega",
+    "centro": "Centro Logístico Sur",
+    "grupo_requisitos": "Operario Maquinaria",
+    "estado": "Baja"
+  },
+  {
+    "id": "44445555H",
+    "dni": "44445555H",
+    "nombre": "Paula",
+    "apellido1": "Castro",
+    "apellido2": "Vega",
+    "centro": "Obra Rehabilitación Centro",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "88889999I",
+    "dni": "88889999I",
+    "nombre": "Daniel",
+    "apellido1": "Ramos",
+    "apellido2": "Soler",
+    "centro": "Planta Solar El Sol",
+    "grupo_requisitos": "Operario Maquinaria",
+    "estado": "Activo"
+  },
+  {
+    "id": "00001111J",
+    "dni": "00001111J",
+    "nombre": "Irene",
+    "apellido1": "Soto",
+    "apellido2": "Cruz",
+    "centro": "Oficina Central Madrid",
+    "grupo_requisitos": "Administrativo",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "12121212K",
+    "dni": "12121212K",
+    "nombre": "Sergio",
+    "apellido1": "Vidal",
+    "apellido2": "Pardo",
+    "centro": "Fábrica de Componentes",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "B98798798",
+    "dni": "B98798798",
+    "nombre": "Transportes Veloz",
+    "apellido1": "",
+    "apellido2": "",
+    "centro": "Centro Logístico Sur",
+    "grupo_requisitos": "Contratista General",
+    "estado": "Pendiente"
+  },
+  {
+    "id": "34343434L",
+    "dni": "34343434L",
+    "nombre": "Raquel",
+    "apellido1": "Molina",
+    "apellido2": "Sanz",
+    "centro": "Obra Rehabilitación Centro",
+    "grupo_requisitos": "Operario Maquinaria",
+    "estado": "Activo"
+  },
+  {
+    "id": "56565656M",
+    "dni": "56565656M",
+    "nombre": "Marcos",
+    "apellido1": "Herrera",
+    "apellido2": "Rubio",
+    "centro": "Construcción Torre Norte",
+    "grupo_requisitos": "Operario Construcción",
+    "estado": "Activo"
+  },
+  {
+    "id": "B11223344",
+    "dni": "B11223344",
+    "nombre": "NAXIA SMART SOLUTIONS S.L.",
+    "apellido1": "",
+    "apellido2": "",
+    "centro": "Oficina Central Madrid",
+    "grupo_requisitos": "Contratista General",
+    "estado": "Pendiente"
+  }
+]

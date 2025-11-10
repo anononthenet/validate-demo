@@ -1,0 +1,17 @@
+
+[
+  {
+    "id": "log-001",
+    "ts": "2024-07-21T10:00:00Z",
+    "usuario": "guillermo@naxia.es",
+    "accion": "Inicio de sesión",
+    "detalle": "Acceso a la plataforma"
+  },
+  {
+    "id": "log-002",
+    "ts": "2024-07-21T10:05:23Z",
+    "usuario": "guillermo@naxia.es",
+    "accion": "Consulta de dashboard",
+    "detalle": "Visualización de KPIs principales"
+  }
+]

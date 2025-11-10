@@ -1,0 +1,159 @@
+
+[
+  {
+    "id": "doc-001", "dni": "12345678W", "tipo": "DNI", "obra": "Construcción Torre Norte", "fecha_carga": "2024-01-10", "caducidad": "2028-10-01", "estado": "Aprobado", "nombreArchivo": "dni_juan_perez.pdf"
+  },
+  {
+    "id": "doc-002", "dni": "12345678W", "tipo": "Certificado Formación PRL", "obra": "Construcción Torre Norte", "fecha_carga": "2024-05-11", "caducidad": "2026-05-11", "estado": "Aprobado", "nombreArchivo": "prl_juan.pdf"
+  },
+  {
+    "id": "doc-003", "dni": "Y8765432Z", "tipo": "NIE", "obra": "Oficina Central Madrid", "fecha_carga": "2024-06-01", "caducidad": "2029-01-01", "estado": "Aprobado", "nombreArchivo": "nie_maria.pdf"
+  },
+  {
+    "id": "doc-004", "dni": "B12345678", "tipo": "Certificado Corriente de Pago SS", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2024-07-20", "caducidad": "2024-08-20", "estado": "Pendiente de Revisión", "nombreArchivo": "cert_ss_construcciones.pdf"
+  },
+  {
+    "id": "doc-005", "dni": "55556666A", "tipo": "Certificado Maquinaria", "obra": "Fábrica de Componentes", "fecha_carga": "2024-02-15", "caducidad": "2025-02-15", "estado": "Aprobado", "nombreArchivo": "maq_carlos.pdf"
+  },
+  {
+    "id": "doc-006", "dni": "55556666A", "tipo": "Apto Médico", "obra": "Fábrica de Componentes", "fecha_carga": "2024-07-01", "caducidad": "2025-07-01", "estado": "Aprobado", "nombreArchivo": "apto_carlos.pdf"
+  },
+  {
+    "id": "doc-007", "dni": "77778888B", "tipo": "DNI", "obra": "Oficina Central Madrid", "fecha_carga": "2023-11-20", "caducidad": "2030-11-20", "estado": "Aprobado", "nombreArchivo": "dni_laura.pdf"
+  },
+  {
+    "id": "doc-008", "dni": "11112222C", "tipo": "Certificado Formación PRL", "obra": "Centro Logístico Sur", "fecha_carga": "2024-06-25", "caducidad": "2024-07-28", "estado": "Aprobado", "nombreArchivo": "prl_pedro.pdf"
+  },
+  {
+    "id": "doc-009", "dni": "33334444D", "tipo": "DNI", "obra": "Planta Solar El Sol", "fecha_carga": "2024-07-10", "caducidad": "2027-05-10", "estado": "Pendiente de Revisión", "nombreArchivo": "dni_sofia.pdf"
+  },
+  {
+    "id": "doc-010", "dni": "33334444D", "tipo": "Certificado Formación PRL", "obra": "Planta Solar El Sol", "fecha_carga": "2024-07-11", "caducidad": "2026-07-11", "estado": "Pendiente de Revisión", "nombreArchivo": "prl_sofia.pdf"
+  },
+  {
+    "id": "doc-011", "dni": "99990000E", "tipo": "Apto Médico", "obra": "Construcción Torre Norte", "fecha_carga": "2024-06-30", "caducidad": "2024-06-15", "estado": "Caducado", "nombreArchivo": "apto_javier_old.pdf"
+  },
+  {
+    "id": "doc-012", "dni": "66667777F", "tipo": "Contrato", "obra": "Fábrica de Componentes", "fecha_carga": "2024-01-01", "caducidad": "2025-01-01", "estado": "Aprobado", "nombreArchivo": "contrato_elena.pdf"
+  },
+  {
+    "id": "doc-013", "dni": "B87654321", "tipo": "Seguro RC", "obra": "Planta Solar El Sol", "fecha_carga": "2024-03-01", "caducidad": "2025-03-01", "estado": "Aprobado", "nombreArchivo": "rc_acme.pdf"
+  },
+  {
+    "id": "doc-014", "dni": "B87654321", "tipo": "TC2", "obra": "Planta Solar El Sol", "fecha_carga": "2024-07-02", "caducidad": "2024-07-31", "estado": "Aprobado", "nombreArchivo": "tc2_jul_acme.pdf"
+  },
+  {
+    "id": "doc-015", "dni": "A12312312", "tipo": "Certificado Corriente de Pago AEAT", "obra": "Oficina Central Madrid", "fecha_carga": "2024-07-15", "caducidad": "2024-08-15", "estado": "Aprobado", "nombreArchivo": "aeat_brillo.pdf"
+  },
+  {
+    "id": "doc-016", "dni": "44445555H", "tipo": "Certificado Formación PRL", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2022-08-01", "caducidad": "2024-08-01", "estado": "Aprobado", "nombreArchivo": "prl_paula.pdf"
+  },
+  {
+    "id": "doc-017", "dni": "88889999I", "tipo": "Certificado Maquinaria", "obra": "Planta Solar El Sol", "fecha_carga": "2024-02-20", "caducidad": "2026-02-20", "estado": "Aprobado", "nombreArchivo": "maq_daniel.pdf"
+  },
+  {
+    "id": "doc-018", "dni": "00001111J", "tipo": "DNI", "obra": "Oficina Central Madrid", "fecha_carga": "2024-07-21", "caducidad": "2029-12-01", "estado": "Pendiente de Revisión", "nombreArchivo": "dni_irene.pdf"
+  },
+  {
+    "id": "doc-019", "dni": "12121212K", "tipo": "DNI", "obra": "Fábrica de Componentes", "fecha_carga": "2024-05-05", "caducidad": "2028-05-05", "estado": "Aprobado", "nombreArchivo": "dni_sergio.pdf"
+  },
+  {
+    "id": "doc-020", "dni": "B98798798", "tipo": "Certificado Corriente de Pago SS", "obra": "Centro Logístico Sur", "fecha_carga": "2024-07-18", "caducidad": "2024-08-18", "estado": "Pendiente de Revisión", "nombreArchivo": "ss_veloz.pdf"
+  },
+  {
+    "id": "doc-021", "dni": "34343434L", "tipo": "Apto Médico", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2023-09-01", "caducidad": "2024-09-01", "estado": "Aprobado", "nombreArchivo": "apto_raquel.pdf"
+  },
+  {
+    "id": "doc-022", "dni": "56565656M", "tipo": "Certificado Formación PRL", "obra": "Construcción Torre Norte", "fecha_carga": "2024-07-01", "caducidad": "2024-07-15", "estado": "Caducado", "nombreArchivo": "prl_marcos_old.pdf"
+  },
+  {
+    "id": "doc-023", "dni": "12345678W", "tipo": "Apto Médico", "obra": "Construcción Torre Norte", "fecha_carga": "2024-04-10", "caducidad": "2025-04-10", "estado": "Aprobado", "nombreArchivo": "apto_juan.pdf"
+  },
+  {
+    "id": "doc-024", "dni": "Y8765432Z", "tipo": "Contrato", "obra": "Oficina Central Madrid", "fecha_carga": "2024-05-30", "caducidad": "2026-05-30", "estado": "Aprobado", "nombreArchivo": "contrato_maria.pdf"
+  },
+  {
+    "id": "doc-025", "dni": "55556666A", "tipo": "Certificado Formación PRL", "obra": "Fábrica de Componentes", "fecha_carga": "2024-07-20", "caducidad": "2024-08-05", "estado": "Aprobado", "nombreArchivo": "prl_carlos.pdf"
+  },
+  {
+    "id": "doc-026", "dni": "77778888B", "tipo": "Certificado Formación PRL", "obra": "Oficina Central Madrid", "fecha_carga": "2024-01-15", "caducidad": "2026-01-15", "estado": "Aprobado", "nombreArchivo": "prl_laura.pdf"
+  },
+  {
+    "id": "doc-027", "dni": "11112222C", "tipo": "Apto Médico", "obra": "Centro Logístico Sur", "fecha_carga": "2024-07-01", "caducidad": "2025-07-01", "estado": "Aprobado", "nombreArchivo": "apto_pedro.pdf"
+  },
+  {
+    "id": "doc-028", "dni": "99990000E", "tipo": "DNI", "obra": "Construcción Torre Norte", "fecha_carga": "2023-10-10", "caducidad": "2028-10-10", "estado": "Aprobado", "nombreArchivo": "dni_javier.pdf"
+  },
+  {
+    "id": "doc-029", "dni": "66667777F", "tipo": "DNI", "obra": "Fábrica de Componentes", "fecha_carga": "2023-12-01", "caducidad": "2030-12-01", "estado": "Aprobado", "nombreArchivo": "dni_elena.pdf"
+  },
+  {
+    "id": "doc-030", "dni": "B87654321", "tipo": "Certificado Corriente de Pago SS", "obra": "Planta Solar El Sol", "fecha_carga": "2024-07-01", "caducidad": "2024-07-31", "estado": "Aprobado", "nombreArchivo": "ss_acme.pdf"
+  },
+  {
+    "id": "doc-031", "dni": "44445555H", "tipo": "DNI", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2024-02-02", "caducidad": "2029-02-02", "estado": "Aprobado", "nombreArchivo": "dni_paula.pdf"
+  },
+  {
+    "id": "doc-032", "dni": "88889999I", "tipo": "Apto Médico", "obra": "Planta Solar El Sol", "fecha_carga": "2024-02-18", "caducidad": "2025-02-18", "estado": "Aprobado", "nombreArchivo": "apto_daniel.pdf"
+  },
+  {
+    "id": "doc-033", "dni": "12121212K", "tipo": "Apto Médico", "obra": "Fábrica de Componentes", "fecha_carga": "2024-05-10", "caducidad": "2025-05-10", "estado": "Aprobado", "nombreArchivo": "apto_sergio.pdf"
+  },
+  {
+    "id": "doc-034", "dni": "B98798798", "tipo": "Seguro RC", "obra": "Centro Logístico Sur", "fecha_carga": "2024-07-19", "caducidad": "2025-07-19", "estado": "Pendiente de Revisión", "nombreArchivo": "rc_veloz.pdf"
+  },
+  {
+    "id": "doc-035", "dni": "34343434L", "tipo": "Certificado Maquinaria", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2023-09-01", "caducidad": "2025-09-01", "estado": "Aprobado", "nombreArchivo": "maq_raquel.pdf"
+  },
+  {
+    "id": "doc-036", "dni": "56565656M", "tipo": "DNI", "obra": "Construcción Torre Norte", "fecha_carga": "2024-01-20", "caducidad": "2027-01-20", "estado": "Aprobado", "nombreArchivo": "dni_marcos.pdf"
+  },
+  {
+    "id": "doc-037", "dni": "98765432Q", "tipo": "DNI", "obra": "Construcción Torre Norte", "fecha_carga": "2023-05-01", "caducidad": "2026-05-01", "estado": "Aprobado", "nombreArchivo": "dni_ana.pdf"
+  },
+  {
+    "id": "doc-038", "dni": "22223333G", "tipo": "DNI", "obra": "Centro Logístico Sur", "fecha_carga": "2023-03-03", "caducidad": "2028-03-03", "estado": "Aprobado", "nombreArchivo": "dni_david.pdf"
+  },
+  {
+    "id": "doc-039", "dni": "12345678W", "tipo": "Certificado Maquinaria", "obra": "Construcción Torre Norte", "fecha_carga": "2024-06-01", "caducidad": "2025-06-01", "estado": "Aprobado", "nombreArchivo": "maq_juan.pdf"
+  },
+  {
+    "id": "doc-040", "dni": "55556666A", "tipo": "DNI", "obra": "Fábrica de Componentes", "fecha_carga": "2024-02-14", "caducidad": "2030-01-01", "estado": "Aprobado", "nombreArchivo": "dni_carlos.pdf"
+  },
+  {
+    "id": "doc-041", "dni": "11112222C", "tipo": "DNI", "obra": "Centro Logístico Sur", "fecha_carga": "2024-06-20", "caducidad": "2029-06-20", "estado": "Aprobado", "nombreArchivo": "dni_pedro.pdf"
+  },
+  {
+    "id": "doc-042", "dni": "99990000E", "tipo": "Certificado Formación PRL", "obra": "Construcción Torre Norte", "fecha_carga": "2024-07-22", "caducidad": "2026-07-22", "estado": "Pendiente de Revisión", "nombreArchivo": "prl_javier_nuevo.pdf"
+  },
+  {
+    "id": "doc-043", "dni": "B87654321", "tipo": "Certificado Corriente de Pago AEAT", "obra": "Planta Solar El Sol", "fecha_carga": "2024-07-05", "caducidad": "2024-08-05", "estado": "Aprobado", "nombreArchivo": "aeat_acme.pdf"
+  },
+  {
+    "id": "doc-044", "dni": "88889999I", "tipo": "Certificado Formación PRL", "obra": "Planta Solar El Sol", "fecha_carga": "2024-02-19", "caducidad": "2026-02-19", "estado": "Aprobado", "nombreArchivo": "prl_daniel.pdf"
+  },
+  {
+    "id": "doc-045", "dni": "12121212K", "tipo": "Certificado Formación PRL", "obra": "Fábrica de Componentes", "fecha_carga": "2024-05-11", "caducidad": "2026-05-11", "estado": "Aprobado", "nombreArchivo": "prl_sergio.pdf"
+  },
+  {
+    "id": "doc-046", "dni": "34343434L", "tipo": "DNI", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2023-08-30", "caducidad": "2027-08-30", "estado": "Aprobado", "nombreArchivo": "dni_raquel.pdf"
+  },
+  {
+    "id": "doc-047", "dni": "56565656M", "tipo": "Apto Médico", "obra": "Construcción Torre Norte", "fecha_carga": "2024-01-22", "caducidad": "2025-01-22", "estado": "Aprobado", "nombreArchivo": "apto_marcos.pdf"
+  },
+  {
+    "id": "doc-048", "dni": "56565656M", "tipo": "Certificado Formación PRL", "obra": "Construcción Torre Norte", "fecha_carga": "2024-07-25", "caducidad": "2026-07-25", "estado": "Pendiente de Revisión", "nombreArchivo": "prl_marcos_renovado.pdf"
+  },
+  {
+    "id": "doc-049", "dni": "A12312312", "tipo": "TC2", "obra": "Oficina Central Madrid", "fecha_carga": "2024-07-03", "caducidad": "2024-07-31", "estado": "Aprobado", "nombreArchivo": "tc2_brillo.pdf"
+  },
+  {
+    "id": "doc-050", "dni": "B12345678", "tipo": "Seguro RC", "obra": "Obra Rehabilitación Centro", "fecha_carga": "2024-07-21", "caducidad": "2025-07-21", "estado": "Pendiente de Revisión", "nombreArchivo": "rc_construcciones.pdf"
+  },
+  {
+    "id": "doc-051", "dni": "B11223344", "tipo": "Seguro RC", "obra": "Oficina Central Madrid", "fecha_carga": "2024-07-28", "caducidad": "2025-07-28", "estado": "Pendiente de Revisión", "nombreArchivo": "rc_naxia.pdf"
+  },
+  {
+    "id": "doc-052", "dni": "B11223344", "tipo": "TC2", "obra": "Oficina Central Madrid", "fecha_carga": "2024-07-01", "caducidad": "2024-07-31", "estado": "Pendiente de Revisión", "nombreArchivo": "tc2_jul_naxia.pdf"
+  }
+]

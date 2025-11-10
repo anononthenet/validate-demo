@@ -1,0 +1,5 @@
+{
+  "name": "VALIDATE CAE",
+  "description": "Una demostración de una plataforma de Coordinación de Actividades Empresariales (CAE) sin backend, con datos simulados y un chatbot de IA integrado para la asistencia.",
+  "requestFramePermissions": []
+}
