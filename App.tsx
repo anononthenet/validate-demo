@@ -461,13 +461,17 @@ const LoginPage = ({ onLogin }: { onLogin: (email: string) => void }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
-        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+        // For development and production
+        const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || process.env.VITE_ADMIN_EMAIL || 'admin@validate.es';
+        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || process.env.VITE_ADMIN_PASSWORD || 'ValidateNaxia1357';
+        
+        console.log('Login attempt with:', { email, adminEmail });
         
         if (email === adminEmail && password === adminPassword) {
             onLogin(email);
         } else {
             setError('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
+            console.error('Login failed - Invalid credentials');
         }
     };
 
