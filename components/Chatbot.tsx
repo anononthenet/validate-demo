@@ -51,21 +51,46 @@ const ChatMessage: React.FC<{ message: Message }> = ({ message }) => {
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
-    const [sessionId, setSessionId] = useState<string | null>(null);
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [sessionId, setSessionId] = useState<string | null>(() => {
+        // Try to get session ID from localStorage or generate a new one
+        const savedSessionId = localStorage.getItem('chatSessionId');
+        return savedSessionId || null;
+    });
+    const [messages, setMessages] = useState<Message[]>(() => {
+        // Try to get messages from localStorage
+        const savedMessages = localStorage.getItem('chatMessages');
+        return savedMessages ? JSON.parse(savedMessages) : [];
+    });
     const [input, setInput] = useState('');
     const [isReady, setIsReady] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Initialize session ID
-        const newSessionId = crypto.randomUUID();
-        setSessionId(newSessionId);
+        // Initialize session only if we don't have one
+        if (!sessionId) {
+            const newSessionId = crypto.randomUUID();
+            setSessionId(newSessionId);
+            localStorage.setItem('chatSessionId', newSessionId);
+        }
+        
+        // Set initial welcome message if no messages exist
+        if (messages.length === 0) {
+            const welcomeMessage = {
+                role: 'model' as const, 
+                text: '👋 Bienvenido al Asistente CAE de Validate.\n\nEstoy aquí para ayudarte a gestionar la Coordinación de Actividades Empresariales sin errores y en menos tiempo.\n\nPuedes preguntarme sobre:\n\t•\tAlta de trabajadores o contratas\n\t•\tDocumentación necesaria para acceder a un centro\n\t•\tQué hacer si una documentación es rechazada\n\nTambién puedo acompañarte paso a paso para:\n✅ Subir documentación\n✅ Asociar trabajadores a centros\n✅ Resolver incidencias CAE\n\nSolo dime qué necesitas y te guío.'
+            };
+            setMessages([welcomeMessage]);
+            localStorage.setItem('chatMessages', JSON.stringify([welcomeMessage]));
+        }
+        
         setIsReady(true);
-        setMessages([{ role: 'model', text: '👋 Bienvenido al Asistente CAE de Validate.\n\nEstoy aquí para ayudarte a gestionar la Coordinación de Actividades Empresariales sin errores y en menos tiempo.\n\nPuedes preguntarme sobre:\n\t•\tAlta de trabajadores o contratas\n\t•\tDocumentación necesaria para acceder a un centro\n\t•\tQué hacer si una documentación es rechazada\n\nTambién puedo acompañarte paso a paso para:\n✅ Subir documentación\n✅ Asociar trabajadores a centros\n✅ Resolver incidencias CAE\n\nSolo dime qué necesitas y te guío.' }]);
-    }, []);
+    }, [sessionId, messages.length]);
 
+    // Save messages to localStorage whenever they change
     useEffect(() => {
+        if (messages.length > 0) {
+            localStorage.setItem('chatMessages', JSON.stringify(messages));
+        }
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
@@ -219,9 +244,32 @@ export default function Chatbot() {
             <div className={`fixed bottom-8 right-8 z-50 w-[calc(100%-4rem)] max-w-md h-[70vh] max-h-[600px] bg-slate-100 rounded-xl shadow-2xl flex flex-col transition-all duration-300 origin-bottom-right ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'}`}>
                 <header className="flex items-center justify-between p-4 bg-slate-800 text-white rounded-t-xl">
                     <h3 className="font-semibold text-lg">Asistente VALIDATE CAE</h3>
-                    <button onClick={() => setIsOpen(false)} className="p-1 rounded-full hover:bg-slate-700" aria-label="Cerrar chat">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
+                    <div className="flex items-center space-x-2">
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                const newSessionId = crypto.randomUUID();
+                                setSessionId(newSessionId);
+                                localStorage.setItem('chatSessionId', newSessionId);
+                                const welcomeMessage = {
+                                    role: 'model' as const, 
+                                    text: '👋 Bienvenido al Asistente CAE de Validate.\n\nEstoy aquí para ayudarte a gestionar la Coordinación de Actividades Empresariales sin errores y en menos tiempo.\n\nPuedes preguntarme sobre:\n\t•\tAlta de trabajadores o contratas\n\t•\tDocumentación necesaria para acceder a un centro\n\t•\tQué hacer si una documentación es rechazada\n\nTambién puedo acompañarte paso a paso para:\n✅ Subir documentación\n✅ Asociar trabajadores a centros\n✅ Resolver incidencias CAE\n\nSolo dime qué necesitas y te guío.'
+                                };
+                                setMessages([welcomeMessage]);
+                                localStorage.setItem('chatMessages', JSON.stringify([welcomeMessage]));
+                            }} 
+                            className="p-1 rounded-full hover:bg-slate-700 text-sm flex items-center" 
+                            aria-label="Nueva conversación"
+                            title="Nueva conversación"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </button>
+                        <button onClick={() => setIsOpen(false)} className="p-1 rounded-full hover:bg-slate-700" aria-label="Cerrar chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
                 </header>
                 <div className="flex-1 p-4 overflow-y-auto space-y-4 chatbot-messages">
                     {messages.map((msg, index) => <ChatMessage key={index} message={msg} />)}

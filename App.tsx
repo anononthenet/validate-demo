@@ -462,8 +462,8 @@ const LoginPage = ({ onLogin }: { onLogin: (email: string) => void }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // For development and production
-        const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || process.env.VITE_ADMIN_EMAIL || 'admin@validate.es';
-        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || process.env.VITE_ADMIN_PASSWORD || 'ValidateNaxia1357';
+        const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || 'admin@validate.es';
+        const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'ValidateNaxia1357';
         
         console.log('Login attempt with:', { email, adminEmail });
         
