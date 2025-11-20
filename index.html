@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VALIDATE CAE</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
   <style>
     /* Custom scrollbar for chat */
     .chatbot-messages::-webkit-scrollbar {
@@ -22,6 +24,45 @@
       /* slate-300 */
       border-radius: 20px;
       border: 3px solid transparent;
+    }
+
+    /* Typing indicator animation */
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 12px;
+    }
+
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #94a3b8;
+      animation: typing-bounce 1.4s infinite ease-in-out;
+    }
+
+    .typing-indicator span:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes typing-bounce {
+
+      0%,
+      80%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+
+      40% {
+        transform: translateY(-8px);
+        opacity: 1;
+      }
     }
   </style>
   <script type="importmap">
@@ -158,7 +199,6 @@
               max-width: 80%;
               padding: 8px 10px;
               border-radius: 14px;
-              white-space: pre-wrap;
               line-height: 1.4;
               box-shadow: 0 2px 6px rgba(15,23,42,0.08);
               margin-bottom: 12px;
@@ -168,11 +208,80 @@
               background: #ea580c;
               color: #fff;
               box-shadow: 0 3px 8px rgba(234,88,12,0.35);
+              white-space: pre-wrap;
             }
             .validate-chat-bubble.bot {
               margin-right: auto;
               background: #fff;
               color: #0f172a;
+            }
+            /* Markdown styles for bot messages */
+            .validate-chat-bubble.bot p {
+              margin: 0.5em 0;
+            }
+            .validate-chat-bubble.bot p:first-child {
+              margin-top: 0;
+            }
+            .validate-chat-bubble.bot p:last-child {
+              margin-bottom: 0;
+            }
+            .validate-chat-bubble.bot h1,
+            .validate-chat-bubble.bot h2,
+            .validate-chat-bubble.bot h3 {
+              margin: 0.8em 0 0.4em 0;
+              font-weight: 700;
+            }
+            .validate-chat-bubble.bot h1 { font-size: 1.3em; }
+            .validate-chat-bubble.bot h2 { font-size: 1.2em; }
+            .validate-chat-bubble.bot h3 { font-size: 1.1em; }
+            .validate-chat-bubble.bot ul,
+            .validate-chat-bubble.bot ol {
+              margin: 0.5em 0;
+              padding-left: 1.8em;
+            }
+            .validate-chat-bubble.bot ul {
+              list-style-type: disc;
+            }
+            .validate-chat-bubble.bot ol {
+              list-style-type: decimal;
+            }
+            .validate-chat-bubble.bot li {
+              margin: 0.25em 0;
+              display: list-item;
+            }
+            .validate-chat-bubble.bot code {
+              background: #f1f5f9;
+              padding: 2px 4px;
+              border-radius: 3px;
+              font-family: 'Courier New', monospace;
+              font-size: 0.9em;
+            }
+            .validate-chat-bubble.bot pre {
+              background: #f1f5f9;
+              padding: 8px;
+              border-radius: 6px;
+              overflow-x: auto;
+              margin: 0.5em 0;
+            }
+            .validate-chat-bubble.bot pre code {
+              background: transparent;
+              padding: 0;
+            }
+            .validate-chat-bubble.bot a {
+              color: #ea580c;
+              text-decoration: underline;
+            }
+            .validate-chat-bubble.bot strong {
+              font-weight: 700;
+            }
+            .validate-chat-bubble.bot em {
+              font-style: italic;
+            }
+            .validate-chat-bubble.bot blockquote {
+              border-left: 3px solid #e5e7eb;
+              padding-left: 10px;
+              margin: 0.5em 0;
+              color: #64748b;
             }
           </style>
 
@@ -210,20 +319,26 @@
         const inputEl = document.getElementById('validate-chat-input')
         const sendBtn = document.getElementById('validate-chat-send')
 
-        // Show welcome message on load
-        const welcomeMessage = `👋 Bienvenido al Asistente CAE de Validate.
+        // Configure marked to preserve line breaks
+        marked.setOptions({
+          breaks: true,
+          gfm: true
+        })
+
+        // Show welcome message on load (using markdown format)
+        const welcomeMessage = `👋 **Bienvenido al Asistente CAE de Validate.**
 
 Estoy aquí para ayudarte a gestionar la Coordinación de Actividades Empresariales sin errores y en menos tiempo.
 
 Puedes preguntarme sobre:
-\t•\tAlta de trabajadores o contratas
-\t•\tDocumentación necesaria para acceder a un centro
-\t•\tQué hacer si una documentación es rechazada
+- Alta de trabajadores o contratas
+- Documentación necesaria para acceder a un centro
+- Qué hacer si una documentación es rechazada
 
 También puedo acompañarte paso a paso para:
-✅ Subir documentación
-✅ Asociar trabajadores a centros
-✅ Resolver incidencias CAE
+- ✅ Subir documentación
+- ✅ Asociar trabajadores a centros
+- ✅ Resolver incidencias CAE
 
 Solo dime qué necesitas y te guío.`
         addMessage(welcomeMessage, 'bot')
@@ -231,9 +346,33 @@ Solo dime qué necesitas y te guío.`
         function addMessage(text, from) {
           const div = document.createElement('div')
           div.className = 'validate-chat-bubble ' + from
-          div.textContent = text
+
+          if (from === 'bot') {
+            // Parse markdown for bot messages
+            div.innerHTML = marked.parse(text)
+          } else {
+            // Plain text for user messages
+            div.textContent = text
+          }
+
           messagesEl.appendChild(div)
           messagesEl.scrollTop = messagesEl.scrollHeight
+        }
+
+        function showTypingIndicator() {
+          const div = document.createElement('div')
+          div.className = 'validate-chat-bubble bot typing-indicator'
+          div.id = 'typing-indicator'
+          div.innerHTML = '<span></span><span></span><span></span>'
+          messagesEl.appendChild(div)
+          messagesEl.scrollTop = messagesEl.scrollHeight
+        }
+
+        function hideTypingIndicator() {
+          const indicator = document.getElementById('typing-indicator')
+          if (indicator) {
+            indicator.remove()
+          }
         }
 
         async function send() {
@@ -242,6 +381,9 @@ Solo dime qué necesitas y te guío.`
 
           addMessage(text, 'user')
           inputEl.value = ''
+
+          // Show typing indicator
+          showTypingIndicator()
 
           try {
             const res = await fetch(API_URL, {
@@ -253,6 +395,10 @@ Solo dime qué necesitas y te guío.`
             })
 
             const data = await res.json()
+
+            // Hide typing indicator
+            hideTypingIndicator()
+
             const msgs = data.messages || []
             if (!msgs.length) {
               addMessage('No he recibido respuesta del asistente.', 'bot')
@@ -260,6 +406,8 @@ Solo dime qué necesitas y te guío.`
               msgs.forEach(t => addMessage(t, 'bot'))
             }
           } catch (e) {
+            // Hide typing indicator on error
+            hideTypingIndicator()
             addMessage('Error al conectar con el asistente.', 'bot')
           }
         }
