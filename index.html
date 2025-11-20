@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8" />
-      <link rel="icon" type="image/png" href="/valida.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VALIDATE CAE</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Custom scrollbar for chat */
-      .chatbot-messages::-webkit-scrollbar {
-        width: 6px;
-      }
-      .chatbot-messages::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      .chatbot-messages::-webkit-scrollbar-thumb {
-        background-color: #cbd5e1; /* slate-300 */
-        border-radius: 20px;
-        border: 3px solid transparent;
-      }
-    </style>
-<script type="importmap">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/valida.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VALIDATE CAE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar for chat */
+    .chatbot-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      /* slate-300 */
+      border-radius: 20px;
+      border: 3px solid transparent;
+    }
+  </style>
+  <script type="importmap">
 {
   "imports": {
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
@@ -30,10 +34,281 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
+
 <body class="bg-slate-50 antialiased text-slate-800">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+
+  <!-- Validate Chatbot Widget -->
+  <div id="validate-chat-container"></div>
+
+  <script>
+    ; (function () {
+      const API_URL = 'https://server-chat-validate.vercel.app/api/chat'
+
+      function getSessionId() {
+        try {
+          const stored = localStorage.getItem('validate_chat_session')
+          if (stored) return stored
+          const id = self.crypto?.randomUUID
+            ? self.crypto.randomUUID()
+            : 'sess_' + Math.random().toString(36).slice(2)
+          localStorage.setItem('validate_chat_session', id)
+          return id
+        } catch {
+          return 'anon_' + Math.random().toString(36).slice(2)
+        }
+      }
+
+      const sessionId = getSessionId()
+      const container = document.getElementById('validate-chat-container')
+      if (!container) return
+
+      // Function to check if user is logged in (main app is loaded)
+      function isUserLoggedIn() {
+        const root = document.getElementById('root')
+        if (!root) return false
+        // Check if the root has the main layout (not the login page)
+        const hasMainLayout = root.querySelector('aside') !== null || root.querySelector('header') !== null
+        return hasMainLayout
+      }
+
+      // Function to initialize the chatbot
+      function initializeChatbot() {
+        container.innerHTML = `
+          <style>
+            .validate-chat-button {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 56px;
+              height: 56px;
+              border-radius: 9999px;
+              border: none;
+              background: #ea580c;
+              color: #fff;
+              box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+              cursor: pointer;
+              font-size: 24px;
+              z-index: 9999;
+            }
+            .validate-chat-widget {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 460px;
+              height: 600px;
+              border-radius: 20px;
+              box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+              background: #fff;
+              display: none;
+              flex-direction: column;
+              overflow: hidden;
+              border: 1px solid #e5e7eb;
+              font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+              font-size: 14px;
+              z-index: 9999;
+            }
+            .validate-chat-widget.open {
+              display: flex;
+            }
+            .validate-chat-header {
+              background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+              color: #fff;
+              padding: 10px 12px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .validate-chat-messages {
+              flex: 1;
+              padding: 10px 12px;
+              overflow-y: auto;
+              background: #f8fafc;
+            }
+            .validate-chat-input {
+              padding: 8px 10px;
+              border-top: 1px solid #e5e7eb;
+              display: flex;
+              gap: 6px;
+              align-items: center;
+              background: #fff;
+            }
+            .validate-chat-input input {
+              flex: 1;
+              border-radius: 9999px;
+              border: 1px solid #d1d5db;
+              padding: 8px 12px;
+              outline: none;
+              font-size: 13px;
+            }
+            .validate-chat-input button {
+              border-radius: 9999px;
+              border: none;
+              padding: 8px 14px;
+              background: #ea580c;
+              color: #fff;
+              font-size: 13px;
+              font-weight: 600;
+              cursor: pointer;
+            }
+            .validate-chat-bubble {
+              max-width: 80%;
+              padding: 8px 10px;
+              border-radius: 14px;
+              white-space: pre-wrap;
+              line-height: 1.4;
+              box-shadow: 0 2px 6px rgba(15,23,42,0.08);
+              margin-bottom: 12px;
+            }
+            .validate-chat-bubble.user {
+              margin-left: auto;
+              background: #ea580c;
+              color: #fff;
+              box-shadow: 0 3px 8px rgba(234,88,12,0.35);
+            }
+            .validate-chat-bubble.bot {
+              margin-right: auto;
+              background: #fff;
+              color: #0f172a;
+            }
+          </style>
+
+          <button class="validate-chat-button" id="validate-chat-open">💬</button>
+
+          <div class="validate-chat-widget" id="validate-chat-widget">
+            <div class="validate-chat-header">
+              <div style="font-weight:700;font-size:15px;letter-spacing:.03em;">
+                Asistente Validate
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <button id="validate-chat-restart" style="border:none;background:transparent;color:#fff;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background-color 0.2s;" title="Reiniciar conversación" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                  </svg>
+                </button>
+                <button id="validate-chat-close" style="border:none;background:transparent;color:#fff;font-size:20px;cursor:pointer;padding:4px;display:flex;align-items:center;justify-content:center;border-radius:4px;transition:background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                  ×
+                </button>
+              </div>
+            </div>
+            <div class="validate-chat-messages" id="validate-chat-messages"></div>
+            <div class="validate-chat-input">
+              <input id="validate-chat-input" placeholder="Escribe tu mensaje">
+              <button id="validate-chat-send">Enviar</button>
+            </div>
+          </div>
+        `
+
+        const widget = document.getElementById('validate-chat-widget')
+        const openBtn = document.getElementById('validate-chat-open')
+        const closeBtn = document.getElementById('validate-chat-close')
+        const restartBtn = document.getElementById('validate-chat-restart')
+        const messagesEl = document.getElementById('validate-chat-messages')
+        const inputEl = document.getElementById('validate-chat-input')
+        const sendBtn = document.getElementById('validate-chat-send')
+
+        // Show welcome message on load
+        const welcomeMessage = `👋 Bienvenido al Asistente CAE de Validate.
+
+Estoy aquí para ayudarte a gestionar la Coordinación de Actividades Empresariales sin errores y en menos tiempo.
+
+Puedes preguntarme sobre:
+\t•\tAlta de trabajadores o contratas
+\t•\tDocumentación necesaria para acceder a un centro
+\t•\tQué hacer si una documentación es rechazada
+
+También puedo acompañarte paso a paso para:
+✅ Subir documentación
+✅ Asociar trabajadores a centros
+✅ Resolver incidencias CAE
+
+Solo dime qué necesitas y te guío.`
+        addMessage(welcomeMessage, 'bot')
+
+        function addMessage(text, from) {
+          const div = document.createElement('div')
+          div.className = 'validate-chat-bubble ' + from
+          div.textContent = text
+          messagesEl.appendChild(div)
+          messagesEl.scrollTop = messagesEl.scrollHeight
+        }
+
+        async function send() {
+          const text = inputEl.value.trim()
+          if (!text) return
+
+          addMessage(text, 'user')
+          inputEl.value = ''
+
+          try {
+            const res = await fetch(API_URL, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ text, sessionId })
+            })
+
+            const data = await res.json()
+            const msgs = data.messages || []
+            if (!msgs.length) {
+              addMessage('No he recibido respuesta del asistente.', 'bot')
+            } else {
+              msgs.forEach(t => addMessage(t, 'bot'))
+            }
+          } catch (e) {
+            addMessage('Error al conectar con el asistente.', 'bot')
+          }
+        }
+
+        openBtn.addEventListener('click', () => {
+          widget.classList.add('open')
+          openBtn.style.display = 'none'
+        })
+
+        closeBtn.addEventListener('click', () => {
+          widget.classList.remove('open')
+          openBtn.style.display = 'block'
+        })
+
+        restartBtn.addEventListener('click', () => {
+          messagesEl.innerHTML = ''
+          addMessage(welcomeMessage, 'bot')
+        })
+
+        sendBtn.addEventListener('click', send)
+
+        inputEl.addEventListener('keydown', e => {
+          if (e.key === 'Enter') {
+            e.preventDefault()
+            send()
+          }
+        })
+      }
+
+      // Observer to detect when user logs in
+      const observer = new MutationObserver(() => {
+        if (isUserLoggedIn()) {
+          initializeChatbot()
+          observer.disconnect() // Stop observing once chatbot is initialized
+        }
+      })
+
+      // Start observing if not already logged in
+      if (isUserLoggedIn()) {
+        initializeChatbot()
+      } else {
+        // Observe changes to the root element
+        const root = document.getElementById('root')
+        if (root) {
+          observer.observe(root, { childList: true, subtree: true })
+        }
+      }
+    })()
+  </script>
 </body>
+
 </html>
